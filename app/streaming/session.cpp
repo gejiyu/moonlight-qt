@@ -1415,7 +1415,7 @@ void Session::execInternal()
         }
     }
 
-    m_Window = SDL_CreateWindow("Moonlight",
+    m_Window = SDL_CreateWindow("Moonlight Session",
                                 x,
                                 y,
                                 width,
@@ -1426,7 +1426,7 @@ void Session::execInternal()
                     "SDL_CreateWindow() failed with platform flags: %s",
                     SDL_GetError());
 
-        m_Window = SDL_CreateWindow("Moonlight",
+        m_Window = SDL_CreateWindow("Moonlight Session",
                                     x,
                                     y,
                                     width,

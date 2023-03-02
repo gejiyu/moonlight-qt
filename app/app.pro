@@ -1,4 +1,4 @@
-QT += core quick network quickcontrols2 svg
+QT += core quick network quickcontrols2 svg axcontainer
 CONFIG += c++11
 
 unix:!macx {
@@ -132,6 +132,8 @@ macx {
 SOURCES += \
     backend/nvaddress.cpp \
     backend/nvapp.cpp \
+    backend/scriptmanager.cpp \
+    cli/dm.cpp \
     cli/pair.cpp \
     main.cpp \
     backend/computerseeker.cpp \
@@ -172,6 +174,8 @@ SOURCES += \
 HEADERS += \
     backend/nvaddress.h \
     backend/nvapp.h \
+    backend/scriptmanager.h \
+    cli/dm.h \
     cli/pair.h \
     settings/compatfetcher.h \
     settings/mappingfetcher.h \

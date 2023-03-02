@@ -43,6 +43,7 @@
 #include "streaming/session.h"
 #include "settings/streamingpreferences.h"
 #include "gui/sdlgamepadkeynavigation.h"
+#include "backend/scriptmanager.h"
 
 #if !defined(QT_DEBUG) && defined(Q_OS_WIN32)
 // Log to file for release Windows builds
@@ -286,7 +287,7 @@ int main(int argc, char *argv[])
     // it is critical that these be called before Path::initialize().
     QCoreApplication::setOrganizationName("Moonlight Game Streaming Project");
     QCoreApplication::setOrganizationDomain("moonlight-stream.com");
-    QCoreApplication::setApplicationName("Moonlight");
+    QCoreApplication::setApplicationName("Moonlight Main");
 
     if (QFile(QDir::currentPath() + "/portable.dat").exists()) {
         QSettings::setDefaultFormat(QSettings::IniFormat);
@@ -617,7 +618,11 @@ int main(int argc, char *argv[])
                                                    [](QQmlEngine* qmlEngine, QJSEngine*) -> QObject* {
                                                        return new StreamingPreferences(qmlEngine);
                                                    });
-
+    qmlRegisterSingletonType<ScriptManager>("ScriptManager", 1, 0,
+                                            "ScriptManager",
+                                            [](QQmlEngine*, QJSEngine*) -> QObject* {
+                                                   return new ScriptManager();
+                                            });
     // Create the identity manager on the main thread
     IdentityManager::get();
 
